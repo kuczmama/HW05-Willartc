@@ -36,7 +36,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>C:\Users\Cary\Documents\GitHub\HW05-Willartc\HW05-TSPGraph-willartc\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -60,23 +62,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\materials.d\Graph.h" />
-    <ClInclude Include="..\materials.d\GraphAlgs.h" />
-    <ClInclude Include="..\materials.d\ListGraph.h" />
-    <ClInclude Include="..\materials.d\MatrixGraph.h" />
-    <ClInclude Include="..\materials.d\StarbucksMap.h" />
-    <ClInclude Include="..\materials.d\Tester.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\materials.d\Controller.cpp" />
-    <ClCompile Include="..\materials.d\GraphAlgs.cpp" />
-    <ClCompile Include="..\materials.d\ListGraph.cpp" />
-    <ClCompile Include="..\materials.d\MatrixGraph.cpp" />
-    <ClCompile Include="..\materials.d\StarbucksMap.cpp" />
-    <ClCompile Include="..\materials.d\Tester.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="..\materials.d\Starbucks.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\Controller.cpp" />
+    <ClCompile Include="..\src\GraphAlgs.cpp" />
+    <ClCompile Include="..\src\ListGraph.cpp" />
+    <ClCompile Include="..\src\MatrixGraph.cpp" />
+    <ClCompile Include="..\src\StarbucksMap.cpp" />
+    <ClCompile Include="..\src\Tester.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\Graph.h" />
+    <ClInclude Include="..\include\GraphAlgs.h" />
+    <ClInclude Include="..\include\ListGraph.h" />
+    <ClInclude Include="..\include\MatrixGraph.h" />
+    <ClInclude Include="..\include\StarbucksMap.h" />
+    <ClInclude Include="..\include\Tester.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
