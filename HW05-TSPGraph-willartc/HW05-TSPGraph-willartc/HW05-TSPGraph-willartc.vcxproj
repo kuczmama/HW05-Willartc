@@ -63,11 +63,14 @@
     <ClInclude Include="..\materials.d\Graph.h" />
     <ClInclude Include="..\materials.d\GraphAlgs.h" />
     <ClInclude Include="..\materials.d\ListGraph.h" />
+    <ClInclude Include="..\materials.d\MatrixGraph.h" />
     <ClInclude Include="..\materials.d\StarbucksMap.h" />
     <ClInclude Include="..\materials.d\Tester.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\materials.d\Controller.cpp" />
+    <ClCompile Include="..\materials.d\ListGraph.cpp" />
+    <ClCompile Include="..\materials.d\MatrixGraph.cpp" />
     <ClCompile Include="..\materials.d\StarbucksMap.cpp" />
     <ClCompile Include="..\materials.d\Tester.cpp" />
   </ItemGroup>

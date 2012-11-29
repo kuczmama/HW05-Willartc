@@ -13,17 +13,17 @@ class MatrixGraph : public Graph {
   ~MatrixGraph();
 
   // Modifiers
-  virtual void addEdge(NodeID u, NodeID v, EdgeWeight weight);
+  void addEdge(NodeID u, NodeID v, EdgeWeight weight);
   
   // Inspectors
-  virtual EdgeWeight weight(NodeID u, NodeID v) const;
-  virtual std::list<NWPair> getAdj(NodeID u) const;
-  virtual unsigned degree(NodeID u) const;
-  virtual unsigned size() const;
-  virtual unsigned numEdges() const;
+  EdgeWeight weight(NodeID u, NodeID v) const;
+  std::list<NWPair> getAdj(NodeID u) const;
+  unsigned degree(NodeID u) const;
+  unsigned size() const;
+  unsigned numEdges() const;
 
  private:
-  MatrixGraph() {;}
+  MatrixGraph() {;} // The ; has implemented this constructor
 
   std::vector<std::vector<EdgeWeight> > M;
   int num_edges;
