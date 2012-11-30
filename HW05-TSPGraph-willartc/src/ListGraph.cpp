@@ -15,25 +15,22 @@ void ListGraph::addEdge(NodeID u, NodeID v, EdgeWeight weight){
 		NWPair tPair = (*it);  // The star is NOT the dereference operator, the * has been overloaded
 		if(tPair.first == v){
 			tPair.second = weight;
+			insertDuplicate = true;
 		}
 	}
 	// Insert complimentary edge name because the graph is undirected
 	if(insertDuplicate){
-		for(it = edgeList[u].begin(); it != edgeList[u].end(); it++){
-			NWPair tPair = (*it);  // The star is NOT the dereference operator, the * has been overloaded
-			if(tPair.first == v){
+		for(it = edgeList[v].begin(); it != edgeList[v].end(); it++){
+			NWPair tPair = (*it);  // The star is NOT the derefereence operator, the * has been overloaded
+			if(tPair.first == u){
 				tPair.second = weight;
 				num_edges++;
 				return;
 			}
 		}
 	}
-	NWPair tPair;  // Local variable scope errors?
-	tPair.first = v;
-	tPair.second = weight;
-	edgeList[u].push_back(tPair);
-	tPair.first = u;	// Insert complimentary edge name
-	edgeList[v].push_back(tPair);
+	edgeList[u].push_back(std::make_pair(v, weight));
+	edgeList[u].push_back(std::make_pair(v, weight));
 	num_edges++;
 }
 
