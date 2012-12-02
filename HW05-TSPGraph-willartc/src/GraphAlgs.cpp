@@ -3,7 +3,7 @@
 	// Initializes bestTourLen and bestTour[]
 	// Chooses the nodes in order of ascendin NodeID
 	// Recommend trying to get a better tour choice in the future
-void GraphAlgs::tspSetup(Graph* g){
+void tspSetup(Graph* g){
 	G = g;
 	numTourImprovements = 0;
 	bestTourLen = 0;
@@ -22,14 +22,13 @@ void GraphAlgs::tspSetup(Graph* g){
 	}
 }
 
-std::pair<std::vector<NodeID>, EdgeWeight> GraphAlgs::TSP(Graph* G){
+std::pair<std::vector<NodeID>, EdgeWeight> TSP(Graph* G){
 	tspSetup(G);
 	findBestTour(currentTour, 1, G->size());
 	return std::make_pair(bestTour, bestTourLen);
 }
-	
-	// Start cur as 1
-void GraphAlgs::findBestTour(int* arr, int cur, int length){
+	 
+void findBestTour(int* arr, int cur, int length){
 	if( cur >= length){
 		return;
 	} else {
@@ -42,7 +41,7 @@ void GraphAlgs::findBestTour(int* arr, int cur, int length){
 	}
 }
 
-bool GraphAlgs::tour(int* arr, int arrLen){
+bool tour(int* arr, int arrLen){
 	double currentTourWeight = 0;
 	for(int i = 1; i < arrLen; i++){
 		currentTourWeight += G->weight(0, i);
@@ -58,7 +57,7 @@ bool GraphAlgs::tour(int* arr, int arrLen){
 	return true;
 }
 
-void GraphAlgs::swap(int p, int q){
+void swap(int p, int q){
 	int temp = q;
 	q = p;
 	p = temp;
