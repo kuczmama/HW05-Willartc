@@ -5,28 +5,25 @@
 #pragma once
 
 static Graph* G;
-static double bestTourLen;
-static std::vector<NodeID> bestTour;  // An array of NodeIDs that will contain the order for the shortest tour
-static int numTourImprovements;  // For guaging how good firstTour is
-static double currentTourLen;
-static std::vector<NodeID> currentTour;
-	
+static double bestTourWeight;
+static int tourLen;
+static NodeID* bestTour;  // An array of NodeIDs that will contain the order for the shortest tour
 
 	// Not a constructor, but similar to one.  Called by TSP!
-void tspSetup(Graph* graph);
+NodeID* tspSetup(Graph* graph);
 
 void firstTour();
 
-void findBestTour(std::vector<NodeID> arr, int cur, int length);
+void findBestTour(int cur, double sum, NodeID* currentTour);
 
 	// Returns the sum of all of the weights in a tour.
 	// Checks with bestTourLen after the addition of every weight
 	// Updates bestTourLen and bestTour[] if a better tour is found
 	// Returns false if not the best tour
-bool tour(std::vector<NodeID> arr, int arrLen);
+void checkTour(NodeID* currentTour);
 
 	// Helper method, swaps two ints.  Useful for exchanging NodeIDs in TSP
-static void swap(std::vector<NodeID> arr, int p, int q);
+void swapCurrentTour(int p, int q, NodeID* currentTour);
 
 /*
  * Solves the Traveling Salesperson Problem: finding the shortest cycle through a graph that 
