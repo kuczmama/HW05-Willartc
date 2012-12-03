@@ -21,7 +21,7 @@ double dist(const Store& S1, const Store& S2) {
 
 StarbucksMap::StarbucksMap() {
   ifstream inFile("Starbucks.csv");
-  if(!inFile){
+  if(!inFile){  // Was "if(!inFile){", always entered the if statement and quit.
     std::cout << "Error opening Starbucks.csv file" << endl;
     exit(0);
   }

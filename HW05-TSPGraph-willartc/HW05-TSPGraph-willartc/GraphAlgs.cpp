@@ -3,22 +3,18 @@
 	// Initializes bestTourLen and bestTour[]
 	// Chooses the nodes in order of ascendin NodeID
 	// Recommend trying to get a better tour choice in the future
-void tspSetup(Graph* g){
-	G = g;
+void tspSetup(Graph* graph){
+	G = graph;
 	numTourImprovements = 0;
 	bestTourLen = 0;
 	bestTour.resize(G->size());
-	currentTour = new int[G->size()];
-	for(int i = 0; i < G->size(); i++){
-		if(i + 1 >= G->size()){
-			bestTour[i] = i;
-			currentTour[i] = i;  // Initializes current tour
-			bestTourLen += G->weight(i, 0);
-		} else{
-			bestTour[i] = i;
-			currentTour[i] = i;  // Initializes current tour
-			bestTourLen += G->weight(i, 0);
-		}
+	currentTour.resize(G->size());
+	bestTour[0] = 0;
+	currentTour[0] = 0;
+	for(int i = 1; i < G->size(); i++){
+		bestTour[i] = i;
+		currentTour[i] = i;  // Initializes current tour
+		bestTourLen += G->weight(i, i-1);
 	}
 }
 
@@ -28,23 +24,23 @@ std::pair<std::vector<NodeID>, EdgeWeight> TSP(Graph* G){
 	return std::make_pair(bestTour, bestTourLen);
 }
 	 
-void findBestTour(int* arr, int cur, int length){
-	if( cur >= length){
+void findBestTour(std::vector<NodeID> arr, int cur, int length){
+	if( cur >= length-1){
 		return;
 	} else {
 		for(int i = cur+1; i < length; i++){
-			swap(arr[cur], arr[i]);
+			swap(arr, arr[cur], arr[i]);
 			tour(arr, length);
 			findBestTour(arr, cur+1, length);
-			swap(arr[cur], arr[i]);
+			swap(arr, arr[cur], arr[i]);
 		}
 	}
 }
 
-bool tour(int* arr, int arrLen){
+bool tour(std::vector<NodeID> arr, int arrLen){
 	double currentTourWeight = 0;
 	for(int i = 1; i < arrLen; i++){
-		currentTourWeight += G->weight(0, i);
+		currentTourWeight += G->weight(arr[0], arr[i]);
 		if(currentTourWeight >= bestTourLen){
 			return false;
 		}
@@ -57,9 +53,8 @@ bool tour(int* arr, int arrLen){
 	return true;
 }
 
-void swap(int p, int q){
-	int temp = q;
-	q = p;
-	p = temp;
+void swap(std::vector<NodeID> arr, int p, int q){
+	int temp = arr[q];
+	arr[q] = arr[p];
+	arr[p] = temp;
 }
-

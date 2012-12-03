@@ -10,6 +10,22 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Graph.h" />
+    <ClInclude Include="GraphAlgs.h" />
+    <ClInclude Include="ListGraph.h" />
+    <ClInclude Include="MatrixGraph.h" />
+    <ClInclude Include="StarbucksMap.h" />
+    <ClInclude Include="Tester.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Controller.cpp" />
+    <ClCompile Include="GraphAlgs.cpp" />
+    <ClCompile Include="ListGraph.cpp" />
+    <ClCompile Include="MatrixGraph.cpp" />
+    <ClCompile Include="StarbucksMap.cpp" />
+    <ClCompile Include="Tester.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C0D05E2F-050F-4C06-B6E9-A3399CA7AC5B}</ProjectGuid>
     <RootNamespace>HW05TSPGraphwillartc</RootNamespace>
@@ -61,25 +77,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <None Include="..\materials.d\Starbucks.csv" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\src\Controller.cpp" />
-    <ClCompile Include="..\src\GraphAlgs.cpp" />
-    <ClCompile Include="..\src\ListGraph.cpp" />
-    <ClCompile Include="..\src\MatrixGraph.cpp" />
-    <ClCompile Include="..\src\StarbucksMap.cpp" />
-    <ClCompile Include="..\src\Tester.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\include\Graph.h" />
-    <ClInclude Include="..\include\GraphAlgs.h" />
-    <ClInclude Include="..\include\ListGraph.h" />
-    <ClInclude Include="..\include\MatrixGraph.h" />
-    <ClInclude Include="..\include\StarbucksMap.h" />
-    <ClInclude Include="..\include\Tester.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
